@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: '../src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
@@ -69,7 +69,7 @@ module.exports = {
     // devtool: 'source-map',
     serve: {
         port: 3001,
-        content: './dist'
+        content: '../dist'
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
