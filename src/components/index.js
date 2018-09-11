@@ -1,3 +1,4 @@
-import './style/bk-global.styl'
+import '../style/bk-global.styl'
 
-export { default as Tabs } from './tabs'
+export { default as ButtonList } from './ButtonList'
+export { default as Tabs } from './Tab'

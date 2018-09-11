@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --config build/webpack.config.js",
+    "build": "webpack --config build/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -31,6 +31,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "webpack": "^4.17.2",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8"
   }

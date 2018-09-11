@@ -21,14 +21,26 @@ class Index extends Component {
         } = this.state;
 
         const {
-            buttonList = []
+            buttonList = [
+                {
+                    text: '111'
+                },
+                {
+                    text: '222'
+                }
+            ]
         } = this.props;
 
         return (
             <div className='bk-tabs'>
                 {
                     buttonList.map ( (item, index) => {
-                        return <button className={ index === activeIndex ? 'activeStyle': ''} key ={index} onClick= { () => this.changeTab(index)}> { item.text }</button>
+                        return <button 
+                                    className={ index === activeIndex ? 'activeStyle': ''} 
+                                    key ={index} 
+                                    onClick= { () => this.changeTab(index)}> 
+                                    { item.text }
+                                </button>
                     })
                 }
             </div>

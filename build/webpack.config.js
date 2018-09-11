@@ -2,21 +2,24 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const normalPath = `${__dirname}/../`;
 
 module.exports = {
     mode: 'development',
-    entry: '../src/index.js',
+    entry: normalPath + 'src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve( normalPath, 'dist'),
         filename: '[name].bundle.js',
         publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/index.html'
+            template: normalPath + 'src/index.html'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        // new BundleAnalyzerPlugin()
     ],
     module: {
         rules: [
@@ -33,7 +36,7 @@ module.exports = {
             },
             {
                 test:/\.js$/,
-                include:path.resolve(__dirname, "src"),
+                include: path.resolve(normalPath, "src"),
                 loader:"babel-loader",
                 options:{
                   presets:[
@@ -52,12 +55,6 @@ module.exports = {
                     ["transform-decorators-legacy"],
                   ],
                 },
-            },
-            {
-                test: /\.jsx?$/,
-                include: [
-                    path.resolve(__dirname, 'src')
-                ]
             }
         ]
     },
@@ -72,7 +69,7 @@ module.exports = {
         content: '../dist'
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(normalPath, 'dist'),
         compress: true,
         port: 9000,
         historyApiFallback: true,

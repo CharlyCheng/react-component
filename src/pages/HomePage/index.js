@@ -1,18 +1,21 @@
 import React , { Component} from 'react';
+import { Link, Route } from 'react-router-dom';
 import {
     Tabs
 } from '../../components'
-
+import './index.styl'
 class Index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            buttonList: [
+            components: [
                 {
-                    text: '爱你姐'
+                    text: 'ButtonList',
+                    path: Tabs
                 },
                 {
-                    text: '爱你妹'
+                    text: 'Tabs',
+                    path: Tabs
                 }
             ]
         }
@@ -20,14 +23,18 @@ class Index extends Component {
 
     render () {
         const {
-            buttonList
+            components
         } = this.state;
 
         return (
-            <div>
-                <Tabs 
-                    buttonList = {buttonList}
-                />
+            <div className='cc-style'>
+                {
+                    components.map ((item, index) => {
+                        return <div className='cc-one' key={ index } >
+                                    <Link to={`/${item.text}`} replace>{ item.text }</Link>
+                               </div>
+                    })
+                }
             </div>
         )
     }
